@@ -7,7 +7,7 @@ public class StoreCode extends ByteCode {
     private String id;
     public StoreCode(){}
 
-    //@Override
+    @Override
     public void init(String args) {
         String argList[] = args.split("\\s");
         value = Integer.parseInt(argList[0]);
@@ -16,6 +16,16 @@ public class StoreCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public String getArgs() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean equals(ByteCode code) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

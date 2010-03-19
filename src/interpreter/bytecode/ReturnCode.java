@@ -6,8 +6,7 @@ public class ReturnCode extends ByteCode {
     private String funcName;
     public ReturnCode(){}
 
-    //@Override
-    public void init(){}
+    @Override
     public void init(String args) {
         funcName = args;
     }
@@ -17,4 +16,17 @@ public class ReturnCode extends ByteCode {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public String getArgs() {
+        return funcName;
+    }
+
+    //@Override
+    public boolean equals(ByteCode code) {
+        Class thisClass = ReturnCode.class;
+        if (thisClass.isInstance(code) && code.getArgs().matches(funcName))
+            return true;
+        else
+            return false;
+    }
 }
