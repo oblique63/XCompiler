@@ -38,11 +38,13 @@ public class RunTimeStack {
     }
 
     public void popFrame() {
-        int frameIndex = framePointers.pop();
+        // Empty the contents of the frame, and add it's top element back to the 'runStack'
         int returnValue = runStack.lastElement();
-        for (int i = frameIndex; i < runStack.size(); i++)
-            runStack.remove(i);
-        
+        int frameIndex = framePointers.pop();
+        int numOfRemovals = runStack.size() - frameIndex;
+        for (int i = 0; i < numOfRemovals; i++)
+            runStack.remove(frameIndex);
+
         runStack.add(returnValue);
     }
 
