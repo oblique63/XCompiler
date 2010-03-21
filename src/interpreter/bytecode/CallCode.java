@@ -6,7 +6,7 @@ public class CallCode extends ByteCode {
     private String funcName;
     public CallCode(){}
 
-    //@Override
+    @Override
     public void init(String args) {
         funcName = args;
     }
@@ -14,6 +14,20 @@ public class CallCode extends ByteCode {
     @Override
     public void execute(VirtualMachine vm) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public String getArgs() {
+        return funcName;
+    }
+
+    //@Override
+    public boolean equals(ByteCode code) {
+        Class thisClass = CallCode.class;
+        if (thisClass.isInstance(code) && code.getArgs().matches(funcName))
+            return true;
+        else
+            return false;
     }
 
 }

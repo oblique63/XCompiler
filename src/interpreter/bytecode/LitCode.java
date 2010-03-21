@@ -7,7 +7,7 @@ public class LitCode extends ByteCode {
     private String id;
     public LitCode(){}
 
-    //@Override
+    @Override
     public void init(String args) {
         String argList[] = args.split("\\s");
         value = Integer.parseInt(argList[0]);
@@ -20,4 +20,8 @@ public class LitCode extends ByteCode {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public String getArgs() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
