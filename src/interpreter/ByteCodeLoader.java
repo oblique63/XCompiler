@@ -15,7 +15,11 @@ public class ByteCodeLoader {
     
     public Program loadCodes() {
         Program program = new Program();
+<<<<<<< HEAD
         //CodeTable.init();
+=======
+        CodeTable.init();
+>>>>>>> 8eccb4f90a5bb6446929eef5cb449ede59553f1d
         try {
             while (programFile.ready()) {
                 String line = programFile.readLine();
@@ -38,6 +42,7 @@ public class ByteCodeLoader {
         return program;
     }
 
+<<<<<<< HEAD
     /*public static void main(String[] args) {
         try{
             ByteCodeLoader foo = new ByteCodeLoader(args[0]);
@@ -48,4 +53,14 @@ public class ByteCodeLoader {
             System.out.println(e.getMessage());
         }
     }*/
+=======
+    public static void main(String[] args) {
+        try{
+            ByteCodeLoader foo = new ByteCodeLoader("/home/oblique/Desktop/test");
+            Program pro = foo.loadCodes();
+            ByteCode code = pro.getCode(0);
+            System.out.println(code.getArgs());
+        } catch (Exception e) {}
+    }
+>>>>>>> 8eccb4f90a5bb6446929eef5cb449ede59553f1d
 }

@@ -17,4 +17,13 @@ public class WriteCode extends ByteCode {
     public String getArgs() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+<<<<<<< HEAD
+=======
+
+    @Override
+    public boolean equals(ByteCode code) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+>>>>>>> 8eccb4f90a5bb6446929eef5cb449ede59553f1d
 }
