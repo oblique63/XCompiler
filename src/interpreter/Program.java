@@ -19,7 +19,7 @@ public class Program {
     public void addCode(ByteCode bytecode) {
         codes.add(bytecode);
 
-        String codeClass = bytecode.getClass().getName().replaceFirst("interpreter.bytecode.", "");
+        String codeClass = bytecode.getClassName(); //bytecode.getClass().getName().replaceFirst("interpreter.bytecode.", "");
         // Keep track of where all the LABEL codes are located
         if (codeClass.matches("LabelCode"))
             labelIndexList.add(codeNum);
@@ -34,7 +34,7 @@ public class Program {
 
     private ByteCode resolveAddress(int codeNum) {
         ByteCode code = codes.get(codeNum);
-        String codeClass = code.getClass().getName().replaceFirst("interpreter.bytecode.", "");
+        String codeClass = code.getClassName(); //code.getClass().getName().replaceFirst("interpreter.bytecode.", "");
         String label, address;
 
         if (codeClass.matches("FalsebranchCode|GotoCode|CallCode|ReturnCode")) {

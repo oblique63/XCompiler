@@ -21,12 +21,4 @@ public class ReturnCode extends ByteCode {
         return funcName;
     }
 
-    //@Override
-    public boolean equals(ByteCode code) {
-        Class thisClass = ReturnCode.class;
-        if (thisClass.isInstance(code) && code.getArgs().matches(funcName))
-            return true;
-        else
-            return false;
-    }
 }

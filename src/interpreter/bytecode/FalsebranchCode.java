@@ -21,12 +21,4 @@ public class FalsebranchCode extends ByteCode{
         return label;
     }
 
-    //@Override
-    public boolean equals(ByteCode code) {
-        Class thisClass = FalsebranchCode.class;
-        if (thisClass.isInstance(code) && code.getArgs().matches(label))
-            return true;
-        else
-            return false;
-    }
 }

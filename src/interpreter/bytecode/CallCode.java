@@ -20,14 +20,4 @@ public class CallCode extends ByteCode {
     public String getArgs() {
         return funcName;
     }
-
-    //@Override
-    public boolean equals(ByteCode code) {
-        Class thisClass = CallCode.class;
-        if (thisClass.isInstance(code) && code.getArgs().matches(funcName))
-            return true;
-        else
-            return false;
-    }
-
 }
