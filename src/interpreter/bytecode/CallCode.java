@@ -13,7 +13,11 @@ public class CallCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        int returnAddress = vm.getProgramCounter(); //+1
+        vm.pushReturnAddrs(returnAddress);
+
+        int goToAddress = Integer.parseInt(funcName.split("<<")[1].split(">>")[0]);
+        vm.setProgramCounter(goToAddress-1);
     }
 
     @Override

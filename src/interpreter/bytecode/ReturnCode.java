@@ -13,12 +13,12 @@ public class ReturnCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        vm.popRunStackFrame();
+        vm.setProgramCounter(vm.popReturnAddrs());
     }
 
     @Override
     public String getArgs() {
         return funcName;
     }
-
 }

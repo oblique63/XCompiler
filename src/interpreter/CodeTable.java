@@ -6,8 +6,8 @@ import java.util.HashMap;
 public class CodeTable {
     private static HashMap<String, String> codeMap = new HashMap<String, String>();
     private static String[] codes = {
-        "Args","Bop","Call","Falsebranch","Goto","Halt","Label",
-        "Lit","Load","Read","Return","Store","Write",
+        "Args","Bop","Call","Dump","Falsebranch","Goto","Halt","Label",
+        "Lit","Load","Pop","Read","Return","Store","Write",
     };
 
     public static void init() {

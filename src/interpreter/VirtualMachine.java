@@ -26,14 +26,13 @@ public class VirtualMachine {
             ByteCode code = program.getCode(programCounter);
             code.execute(this);
 
-            /*if (code.getClassName().matches("DumpCode"))
-                if (code.getArgs().matches("ON"))
-                    dump = true;
-                else
-                    dump = false;*/
+            String codeName = code.getClassName().replaceFirst("Code", "").toUpperCase();
+            if (!codeName.matches("DUMP")) {
+                System.out.println(codeName+" "+code.getArgs());
 
-            if (dump)
-                runStack.dump();
+                if (dump)
+                    runStack.dump();
+            }
             
             programCounter++;
         }
@@ -41,6 +40,14 @@ public class VirtualMachine {
 
     public void stopRunning() {
         isRunning = false;
+    }
+
+    public int getProgramCounter() {
+        return programCounter;
+    }
+
+    public void setProgramCounter(int pc) {
+        programCounter = pc;
     }
 
     //----{ runStack methods }--------------------------------------------------
@@ -75,15 +82,16 @@ public class VirtualMachine {
     public void popRunStackFrame() {
         runStack.popFrame();
     }
+
     public void dumpRunStack(Boolean doDump) {
         dump = doDump;
     }
 
-    //----{ returnAddrs methods }-----------------------------------------------
-    public int peekReturnAddrs() {
-        return returnAddrs.peek();
+    public int runStackSize() {
+        return runStack.size();
     }
 
+    //----{ returnAddrs methods }-----------------------------------------------
     public int popReturnAddrs() {
         return returnAddrs.pop();
     }
@@ -92,7 +100,5 @@ public class VirtualMachine {
         return returnAddrs.push(i);
     }
 
-    public Integer pushReturnAddrs(Integer i) {
-        return returnAddrs.push(i);
-    }
+    
 }

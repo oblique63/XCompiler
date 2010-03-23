@@ -10,11 +10,11 @@ public class WriteCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println(vm.peekRunStack());
     }
 
     @Override
     public String getArgs() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return "";
     }
 }

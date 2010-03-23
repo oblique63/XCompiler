@@ -12,9 +12,7 @@ public class LabelCode extends ByteCode{
     }
 
     @Override
-    public void execute(VirtualMachine vm) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    public void execute(VirtualMachine vm) {}
 
     @Override
     public String getArgs() {

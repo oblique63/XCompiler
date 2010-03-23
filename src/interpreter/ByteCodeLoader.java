@@ -42,8 +42,10 @@ public class ByteCodeLoader {
         try{
             ByteCodeLoader foo = new ByteCodeLoader(args[0]);
             Program pro = foo.loadCodes();
-            ByteCode code = pro.getCode(0);
-            System.out.println(code.getClassName()+" "+code.getArgs());
+            for (int i=0; i < 45; i++) {
+                ByteCode code = pro.getCode(i);
+                System.out.println(code.getClassName()+" "+code.getArgs());
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

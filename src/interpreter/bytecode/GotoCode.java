@@ -13,12 +13,16 @@ public class GotoCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+        int goToAddress = Integer.parseInt(label.split("<<")[1].split(">>")[0]);
+        vm.setProgramCounter(goToAddress-1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
     public String getArgs() {
         return label;
     }
-
 }

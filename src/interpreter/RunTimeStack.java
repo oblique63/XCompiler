@@ -17,10 +17,13 @@ public class RunTimeStack {
     public void dump(){
         System.out.print("[");
         for (int i = 0; i < runStack.size(); i++) {
-            if (framePointers.contains(i))
-                System.out.print("][");
+            if (i != 0 && framePointers.contains(i))
+                System.out.print("] [");
+
+            if (!framePointers.contains(i))
+                System.out.print(",");
             
-            System.out.print(i);
+            System.out.print(runStack.elementAt(i));
         }        
         System.out.println("]");
     }
@@ -60,12 +63,18 @@ public class RunTimeStack {
 
     public int store(int offset) {
         // Overwrites the value at index 'offset' with the top element of the "stack", which is then removed.
-        runStack.set(offset, runStack.lastElement());
+        int frameOffset = framePointers.peek() + offset;
+        runStack.set(frameOffset, runStack.lastElement());
         return runStack.remove(runStack.size()-1);
     }
 
     public int load(int offset) {
-        runStack.add(runStack.get(offset));
+        int frameOffset = framePointers.peek() + offset;
+        runStack.add(runStack.get(frameOffset));
         return runStack.lastElement();
+    }
+
+    public int size() {
+        return runStack.size();
     }
 }

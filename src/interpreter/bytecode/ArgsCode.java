@@ -13,12 +13,12 @@ public class ArgsCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        int offset = vm.runStackSize() - numOfArgs;
+        vm.newRunStackFrameAt(offset);
     }
 
     @Override
     public String getArgs() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Integer.toString(numOfArgs);
     }
-
 }

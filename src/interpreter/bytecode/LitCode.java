@@ -13,15 +13,17 @@ public class LitCode extends ByteCode {
         value = Integer.parseInt(argList[0]);
         if (argList.length > 1)
             id = argList[1];
+        else
+            id = "";
     }
 
     @Override
     public void execute(VirtualMachine vm) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        vm.pushRunStack(value);
     }
 
     @Override
     public String getArgs() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Integer.toString(value)+" "+id;
     }
 }

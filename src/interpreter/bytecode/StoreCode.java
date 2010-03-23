@@ -3,24 +3,24 @@ package interpreter.bytecode;
 import interpreter.VirtualMachine;
 
 public class StoreCode extends ByteCode {
-    private int value;
+    private int offset;
     private String id;
     public StoreCode(){}
 
     @Override
     public void init(String args) {
         String argList[] = args.split("\\s");
-        value = Integer.parseInt(argList[0]);
+        offset = Integer.parseInt(argList[0]);
         id = argList[1];
     }
 
     @Override
     public void execute(VirtualMachine vm) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        vm.storeRunStack(offset);
     }
 
     @Override
     public String getArgs() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Integer.toString(offset)+" "+id;
     }
 }

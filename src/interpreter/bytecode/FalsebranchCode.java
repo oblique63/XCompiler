@@ -13,12 +13,15 @@ public class FalsebranchCode extends ByteCode{
 
     @Override
     public void execute(VirtualMachine vm) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        int boolValue = vm.popRunStack();
+        if (boolValue > 0) {
+            int goToAddress = Integer.parseInt(label.split("<<")[1].split(">>")[0]);
+            vm.setProgramCounter(goToAddress);
+        }
     }
 
     @Override
     public String getArgs() {
         return label;
     }
-
 }

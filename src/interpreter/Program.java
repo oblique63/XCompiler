@@ -1,7 +1,6 @@
 package interpreter;
 
 import interpreter.bytecode.ByteCode;
-import interpreter.bytecode.LabelCode;
 import java.util.Vector;
 
 
@@ -45,7 +44,8 @@ public class Program {
 
                 if(label.matches(targetLabel)) {
                     address = Integer.toString(labelIndexList.get(index));
-                    code.init(address);
+                    String arg = code.getArgs() +"<<"+address+">>";
+                    code.init(arg);
                     break;
                 }
             }
