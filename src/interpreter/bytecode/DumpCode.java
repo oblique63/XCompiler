@@ -2,7 +2,11 @@ package interpreter.bytecode;
 
 import interpreter.VirtualMachine;
 
-
+/**
+ * Toggles DUMP mode on the Virtual Machine
+ * @see interpreter.VirtualMachine#dump(interpreter.bytecode.ByteCode)
+ * @author Enrique Gavidia
+ */
 public class DumpCode extends ByteCode {
     private Boolean dump;
     public DumpCode() {}

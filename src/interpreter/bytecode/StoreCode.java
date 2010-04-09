@@ -2,6 +2,11 @@ package interpreter.bytecode;
 
 import interpreter.VirtualMachine;
 
+/**
+ * Stores a value on to the Runtime stack
+ * @see interpreter.RunTimeStack#store(int)
+ * @author Enrique Gavidia
+ */
 public class StoreCode extends ByteCode {
     private int offset;
     private String id;

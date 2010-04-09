@@ -2,6 +2,10 @@ package interpreter.bytecode;
 
 import interpreter.VirtualMachine;
 
+/**
+ * Moves exection to a specified location in the program
+ * @author Enrique Gavidia
+ */
 public class GotoCode extends ByteCode {
     private String label;
     public GotoCode(){}
@@ -13,12 +17,8 @@ public class GotoCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        try {
-        int goToAddress = Integer.parseInt(label.split("<<")[1].split(">>")[0]);
+        int goToAddress = Integer.parseInt(label.split(" ")[1]);
         vm.setProgramCounter(goToAddress-1);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     @Override

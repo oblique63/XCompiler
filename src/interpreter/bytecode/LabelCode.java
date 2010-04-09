@@ -2,6 +2,10 @@ package interpreter.bytecode;
 
 import interpreter.VirtualMachine;
 
+/**
+ * Labels a section of code to be executed
+ * @author Enrique Gavidia
+ */
 public class LabelCode extends ByteCode{
     private String label;
     public LabelCode(){}

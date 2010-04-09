@@ -2,6 +2,10 @@ package interpreter.bytecode;
 
 import interpreter.VirtualMachine;
 
+/**
+ * Stops the Virtual Machine
+ * @author Enrique Gavidia
+ */
 public class HaltCode extends ByteCode {
     public HaltCode(){}
 

@@ -4,6 +4,10 @@ import interpreter.VirtualMachine;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+/**
+ * Reads input from the user
+ * @author Enrique Gavidia
+ */
 public class ReadCode extends ByteCode {
     public ReadCode(){}
 

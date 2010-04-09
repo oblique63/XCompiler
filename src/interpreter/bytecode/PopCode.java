@@ -2,6 +2,10 @@ package interpreter.bytecode;
 
 import interpreter.VirtualMachine;
 
+/**
+ * Removes the indicated top values from the Runtime stack
+ * @author Enrique Gavidia
+ */
 public class PopCode extends ByteCode {
     private int numOfPops;
     public PopCode() {}

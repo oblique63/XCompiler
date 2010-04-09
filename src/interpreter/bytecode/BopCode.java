@@ -2,6 +2,10 @@ package interpreter.bytecode;
 
 import interpreter.VirtualMachine;
 
+/**
+ * Performs indicated binary operation on the top two values of the Runtime stack
+ * @author Enrique Gavidia
+ */
 public class BopCode extends ByteCode {
     private String operator;
     private int result;
@@ -29,46 +33,48 @@ public class BopCode extends ByteCode {
 
     private int computeResult(int topInt, int lowerInt, String operation) {
         int res = 0;
-        
-        if (operation.startsWith("+"))
+
+        // Arithmetic operators
+        if (operation.equals("+"))
             res = lowerInt + topInt;
-        else if (operation.startsWith("-"))
+        else if (operation.equals("-"))
             res = lowerInt - topInt;
-        else if (operation.startsWith("*"))
+        else if (operation.equals("*"))
             res = lowerInt * topInt;
-        else if (operation.startsWith("/"))
+        else if (operation.equals("/"))
             res = lowerInt / topInt;
 
 
-        else if (operation.startsWith("=="))
+        // Logical operators
+        else if (operation.equals("=="))
             if (lowerInt == topInt)  res = 1;
             else  res = 0;
 
-        else if (operation.startsWith("!="))
+        else if (operation.equals("!="))
             if (lowerInt != topInt)  res = 1;
             else  res = 0;
 
-        else if (operation.startsWith("<="))
+        else if (operation.equals("<="))
             if (lowerInt <= topInt)  res = 1;
             else  res = 0;
 
-        else if (operation.startsWith(">="))
+        else if (operation.equals(">="))
             if (lowerInt >= topInt)  res = 1;
             else  res = 0;
 
-        else if (operation.startsWith("<"))
+        else if (operation.equals("<"))
             if (lowerInt < topInt)  res = 1;
             else  res = 0;
 
-        else if (operation.startsWith(">"))
+        else if (operation.equals(">"))
             if (lowerInt > topInt)  res = 1;
             else  res = 0;
 
-        else if (operation.startsWith("&"))
+        else if (operation.equals("&"))
             if ((lowerInt > 0) && (topInt > 0))  res = 1;
             else  res = 0;
 
-        else if (operation.startsWith("|"))
+        else if (operation.equals("|"))
             if ((lowerInt > 0) || (topInt > 0))  res = 1;
             else  res = 0;
 

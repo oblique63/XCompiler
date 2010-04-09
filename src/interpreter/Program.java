@@ -1,50 +1,79 @@
 package interpreter;
 
 import interpreter.bytecode.ByteCode;
+import java.util.List;
 import java.util.Vector;
 
 
+/**
+ * Produces an object containing all the actual ByteCodes specified by the original
+ * file input to the ByteCodeLoader object
+ * @author Enrique Gavidia
+ */
 public class Program {
     private int codeNum;
-    private Vector<ByteCode> codes;
-    private Vector<Integer> labelIndexList;
+    private List<ByteCode> codes;
+    private List<Integer> labelIndexList;
 
+    /**
+     * Starts a new program
+     */
     public Program() {
         codeNum = 0;
         codes = new Vector<ByteCode>();
         labelIndexList = new Vector<Integer>();
     }
 
+    /**
+     * Adds a Bytecode object to the program
+     * @param bytecode
+     */
     public void addCode(ByteCode bytecode) {
-        codes.add(bytecode);
+        String codeName = bytecode.getName();
 
-        String codeClass = bytecode.getClassName(); //bytecode.getClass().getName().replaceFirst("interpreter.bytecode.", "");
-        // Keep track of where all the LABEL codes are located
-        if (codeClass.matches("LabelCode"))
+        // Keep track of where all the LABEL codes are located for future
+        // reference when resolving addresses
+        if (codeName.matches("LABEL"))
             labelIndexList.add(codeNum);
 
+        codes.add(bytecode);
         codeNum += 1;
     }
 
+    /**
+     * Gets the Bytecode object at the location given
+     * @param codeNum index of the ByteCode requested
+     * @return ByteCode at the given index, with its address resolved (if necessary)
+     */
     public ByteCode getCode(int codeNum) {
-
         return resolveAddress(codeNum);
     }
 
+    /**
+     * Used to find the specific addresses of LABELs that certain ByteCodes are
+     * meant to point to
+     * @param codeNum Index of the requested ByteCode
+     * @return The requested ByteCode object, with the address to the LABEL it is
+     *         meant to point to
+     */
     private ByteCode resolveAddress(int codeNum) {
         ByteCode code = codes.get(codeNum);
-        String codeClass = code.getClassName(); //code.getClass().getName().replaceFirst("interpreter.bytecode.", "");
-        String label, address;
+        String codeName = code.getName();
 
-        if (codeClass.matches("FalsebranchCode|GotoCode|CallCode|ReturnCode")) {
-            label = code.getArgs();
+        // Only resolve addresses when necessary
+        if (codeName.matches("FALSEBRANCH|GOTO|CALL|RETURN")) {
+            String targetLabel = code.getArgs();
 
-            for (int index = 0; index < labelIndexList.size(); index++) {
-                String targetLabel = codes.get(labelIndexList.get(index)).getArgs();
+            // Iterate only through the LABEL Codes in the program
+            for (int labelIndex : labelIndexList) {
+                String label = codes.get(labelIndex).getArgs();
 
-                if(label.matches(targetLabel)) {
-                    address = Integer.toString(labelIndexList.get(index));
-                    String arg = code.getArgs() +"<<"+address+">>";
+                // Once the right LABEL Code is found, initiate the requested
+                // bytecode again with the resolved address, and break out of
+                // the loop to prevent unnecessary iteration
+                if (label.matches(targetLabel)) {
+                    String address = Integer.toString(labelIndex);
+                    String arg = code.getArgs() + " " + address;
                     code.init(arg);
                     break;
                 }

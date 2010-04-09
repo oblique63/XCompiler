@@ -2,6 +2,10 @@ package interpreter.bytecode;
 
 import interpreter.VirtualMachine;
 
+/**
+ * Prepares the arguments to be passed to a funtion call
+ * @author Enrique Gavidia
+ */
 public class ArgsCode extends ByteCode {
     private int numOfArgs;
     public ArgsCode(){}

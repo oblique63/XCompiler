@@ -2,6 +2,10 @@ package interpreter.bytecode;
 
 import interpreter.VirtualMachine;
 
+/**
+ * Writes out the last value on the Runtime stack
+ * @author Enrique Gavidia
+ */
 public class WriteCode extends ByteCode {
     public WriteCode(){}
 

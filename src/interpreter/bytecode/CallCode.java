@@ -2,6 +2,10 @@ package interpreter.bytecode;
 
 import interpreter.VirtualMachine;
 
+/**
+ * Calls a funtion
+ * @author Enrique Gavidia
+ */
 public class CallCode extends ByteCode {
     private String funcName;
     public CallCode(){}
@@ -13,10 +17,10 @@ public class CallCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        int returnAddress = vm.getProgramCounter(); //+1
+        int returnAddress = vm.getProgramCounter();
         vm.pushReturnAddrs(returnAddress);
 
-        int goToAddress = Integer.parseInt(funcName.split("<<")[1].split(">>")[0]);
+        int goToAddress = Integer.parseInt(funcName.split(" ")[1]);
         vm.setProgramCounter(goToAddress-1);
     }
 
@@ -24,4 +28,5 @@ public class CallCode extends ByteCode {
     public String getArgs() {
         return funcName;
     }
+
 }

@@ -2,6 +2,10 @@ package interpreter.bytecode;
 
 import interpreter.VirtualMachine;
 
+/**
+ * Stores a literal value on the Runtime stack
+ * @author Enrique Gavidia
+ */
 public class LitCode extends ByteCode {
     private int value;
     private String id;

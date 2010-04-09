@@ -2,6 +2,10 @@ package interpreter.bytecode;
 
 import interpreter.VirtualMachine;
 
+/**
+ * Returns from a function
+ * @author Enrique Gavidia
+ */
 public class ReturnCode extends ByteCode {
     private String funcName;
     public ReturnCode(){}

@@ -6,21 +6,36 @@ import java.io.FileReader;
 import java.io.IOException;
 
 
+/**
+ * Reads ByteCodes from a given file, and loads them on to a Program object
+ * @see interpreter.Program
+ * @author Enrique Gavidia
+ */
 public class ByteCodeLoader {
     private BufferedReader programFile;
 
+    /**
+     * Loads the file to be read
+     * @param programPath Path of the input ByteCode file
+     * @throws IOException
+     */
     public ByteCodeLoader(String programPath) throws IOException {
         programFile = new BufferedReader(new FileReader(programPath));
     }
     
+    /**
+     * Reads the ByteCodes from the input file, and loads them on to a Program object
+     * @return Program object with the ByteCodes from the file loaded onto it
+     * @see interpreter.Program
+     */
     public Program loadCodes() {
         Program program = new Program();
-        //CodeTable.init();
         try {
             while (programFile.ready()) {
                 String line = programFile.readLine();
+
                 // For each line read, separate the bytecode from its arguments,and store the 2 strings
-                // in an array (where code[0] is the bytecode and code[1] is the string of its arguments)...
+                // in an array (where code[0] is the bytecode and code[1] is the string of its arguments)
                 String[] code = line.split("\\s",2);
                 
                 String codeClass = CodeTable.get(code[0]);
@@ -37,17 +52,4 @@ public class ByteCodeLoader {
 
         return program;
     }
-
-    /*public static void main(String[] args) {
-        try{
-            ByteCodeLoader foo = new ByteCodeLoader(args[0]);
-            Program pro = foo.loadCodes();
-            for (int i=0; i < 45; i++) {
-                ByteCode code = pro.getCode(i);
-                System.out.println(code.getClassName()+" "+code.getArgs());
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }*/
 }
