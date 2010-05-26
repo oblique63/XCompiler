@@ -123,8 +123,10 @@ public class Table {
   public void endScope() {
 	while (top!=null) {
 	   Binder e = symbols.get(top);
-	   if (e.getTail()!=null) symbols.put(top,e.getTail());
-	   else symbols.remove(top);
+	   if (e.getTail()!=null)
+               symbols.put(top,e.getTail());
+	   else
+               symbols.remove(top);
 	   top = e.getPrevtop();
 	}
 	top=marks.getPrevtop();
