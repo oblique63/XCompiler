@@ -1,4 +1,4 @@
 To run:
-java compiler/Compiler.java sourcecode.x
+java src/compiler/Compiler.java sourcecode.x
 
-test '.x' files are included
+test '.x' files are included inside 'src'
